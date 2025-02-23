@@ -117,6 +117,35 @@ def check_positions(centerx, centery): # allowed diretions from a position
             if direction == 3: #down
                 if level[centery-num3][(centerx - num3)//num2] <3:
                     turns[2]= True
+            
+            if direction == 2 or direction == 3: #up and down
+                if 12<= centerx  % num2 <=18: #if center x position of my player, divided my num2 (wide each tile is) is between 12 and 18 then mid point of tile. (each tile is almost 30 wide 900%30)
+                    if level[(centery + num3)//num1][centerx//num2] <3: # position if open then allowed
+                        turns[3] = True # if going up or down, if mid point and if clear to go
+                    
+                    if level[(centery - num3)//num1][centerx//num2] <3: # position if open then allowed
+                        turns[2] = True
+            
+                if 12<= centery  % num1 <=18:
+                    if level[(centery)//num1][centerx-num2//num2] <3: # position if open then allowed
+                        turns[1] = True                     
+                    if level[(centery)//num1][centerx+num2//num2] <3: # position if open then allowed
+                        turns[0] = True
+            
+
+            if direction == 0 or direction == 1:
+                if 12<= centerx  % num2 <=18: #if center x position of my player, divided my num2 (wide each tile is) is between 12 and 18 then mid point of tile. (each tile is almost 30 wide 900%30)
+                    if level[(centery + num1)//num1][centerx//num2] <3: # position if open then allowed
+                        turns[3] = True # if going up or down, if mid point and if clear to go
+                    
+                    if level[(centery - num1)//num1][centerx//num2] <3: # position if open then allowed
+                        turns[2] = True
+            
+                if 12<= centery  % num1 <=18:
+                    if level[(centery)//num1][centerx-num3//num2] <3: # position if open then allowed
+                        turns[1] = True                     
+                    if level[(centery)//num1][centerx+num3//num2] <3: # position if open then allowed
+                        turns[0] = True
 
 
     else: 
